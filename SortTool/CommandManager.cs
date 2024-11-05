@@ -1,4 +1,5 @@
-﻿using System.CommandLine;
+﻿using SortTool.Radix;
+using System.CommandLine;
 using System.CommandLine.NamingConventionBinder;
 using System.Reflection;
 
@@ -83,7 +84,7 @@ namespace SortTool
             }
 
             foreach (var word in SortedWords)
-            {              
+            {
                 Console.WriteLine(word);
             }
         }
@@ -112,7 +113,8 @@ namespace SortTool
                     break;
 
                 case SortAlgorithm.Radix:
-                    SortedWords = RadixSort(words);
+                    var radixSort = new RadixSort();
+                    SortedWords = radixSort.Sort(words);
                     break;
 
                 default:
@@ -170,11 +172,6 @@ namespace SortTool
         }
 
         private List<string> QuickSort(List<string> words)
-        {
-            return words;
-        }
-
-        private List<string> RadixSort(List<string> words)
         {
             return words;
         }
