@@ -1,8 +1,8 @@
 ﻿namespace SortTool.Radix
 {
-    internal class RadixSort
+    internal static class RadixSort
     {
-        public List<string> Sort(List<string> words)
+        public static List<string> Sort(List<string> words)
         {
             // Get length of longest word
             var length = words.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur).Length;
@@ -42,7 +42,7 @@
             return words;
         }
 
-        private List<string> Squish(List<RadixBucket> buckets, List<string> leftOvers)
+        private static List<string> Squish(List<RadixBucket> buckets, List<string> leftOvers)
         {
             var sortedWords = new List<string>(leftOvers);
 

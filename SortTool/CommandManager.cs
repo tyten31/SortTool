@@ -1,7 +1,9 @@
 ﻿using SortTool.Radix;
+using SortTool.Merge;
 using System.CommandLine;
 using System.CommandLine.NamingConventionBinder;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace SortTool
 {
@@ -58,6 +60,9 @@ namespace SortTool
 
         public async Task RunCommand(string command)
         {
+            var timer = new Stopwatch();
+            timer.Start();
+
             SortedWords = [];
             DisplayNumber = -1;
             var commands = command.Trim().Split('|', StringSplitOptions.RemoveEmptyEntries);
@@ -74,6 +79,12 @@ namespace SortTool
             }
 
             DisplaySortedWords();
+
+            timer.Stop();
+            var timeTaken = timer.Elapsed;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{Environment.NewLine}Time Taken: {timeTaken:m\\:ss\\.fff}");
         }
 
         private void DisplaySortedWords()
@@ -105,7 +116,7 @@ namespace SortTool
                     break;
 
                 case SortAlgorithm.Merge:
-                    SortedWords = MergeSort(words);
+                    SortedWords = MergeSort.Sort(words);
                     break;
 
                 case SortAlgorithm.Quick:
@@ -113,8 +124,7 @@ namespace SortTool
                     break;
 
                 case SortAlgorithm.Radix:
-                    var radixSort = new RadixSort();
-                    SortedWords = radixSort.Sort(words);
+                    SortedWords = RadixSort.Sort(words);
                     break;
 
                 default:
@@ -154,11 +164,6 @@ namespace SortTool
             return words;
         }
 
-        private List<string> MergeSort(List<string> words)
-        {
-            return words;
-        }
-
         private List<string> ParseCommand(string command)
         {
             var parts = new List<string>();
@@ -193,7 +198,7 @@ namespace SortTool
 
         private async Task RunSortCommand(List<string> commands)
         {
-            var uniqueOption = new Option<bool>(["--unique", "-u"], () => true, "unique flag option");
+            var uniqueOption = new Option<bool>(["--unique", "-u"], () => false, "unique flag option");
             var algorithmOption = new Option<SortAlgorithm>(["--algorithm", "-a"], () => SortAlgorithm.Lexi, "algorithm flag option");
             var file = new Argument<string>("file", "a required file argument");
 
