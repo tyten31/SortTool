@@ -4,6 +4,7 @@ using System.CommandLine;
 using System.CommandLine.NamingConventionBinder;
 using System.Reflection;
 using System.Diagnostics;
+using SortTool.Quick;
 
 namespace SortTool
 {
@@ -120,7 +121,7 @@ namespace SortTool
                     break;
 
                 case SortAlgorithm.Quick:
-                    SortedWords = QuickSort(words);
+                    SortedWords = QuickSort.Sort(words);
                     break;
 
                 case SortAlgorithm.Radix:
@@ -174,11 +175,6 @@ namespace SortTool
             }
 
             return parts;
-        }
-
-        private List<string> QuickSort(List<string> words)
-        {
-            return words;
         }
 
         private async Task RunHeadCommand(List<string> commands)
