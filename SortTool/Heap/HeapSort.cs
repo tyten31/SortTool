@@ -83,9 +83,7 @@
             // If largest is not root
             if (largestIndex != rootIndex)
             {
-                var temp = words[rootIndex];
-                words[rootIndex] = words[largestIndex];
-                words[largestIndex] = temp;
+                (words[largestIndex], words[rootIndex]) = (words[rootIndex], words[largestIndex]);
 
                 // Recursively heapify the affected sub-tree
                 Heapify(words, length, largestIndex);
