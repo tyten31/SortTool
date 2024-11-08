@@ -5,6 +5,7 @@ using System.CommandLine.NamingConventionBinder;
 using System.Reflection;
 using System.Diagnostics;
 using SortTool.Quick;
+using SortTool.Heap;
 
 namespace SortTool
 {
@@ -113,7 +114,7 @@ namespace SortTool
             switch (algorithm)
             {
                 case SortAlgorithm.Heap:
-                    SortedWords = HeapSort(words);
+                    SortedWords = HeapSort.Sort(words);
                     break;
 
                 case SortAlgorithm.Merge:
@@ -157,11 +158,6 @@ namespace SortTool
                 }
             }
 
-            return words;
-        }
-
-        private List<string> HeapSort(List<string> words)
-        {
             return words;
         }
 

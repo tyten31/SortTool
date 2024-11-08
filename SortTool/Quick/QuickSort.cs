@@ -9,7 +9,7 @@
                 return words;
             }
 
-            var pivot = words.Last();
+            var pivot = words[0];
             var before = new List<string>();
             var after = new List<string>();
             var same = new List<string>();
