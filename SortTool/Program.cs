@@ -83,7 +83,11 @@ namespace SortTool
 
                     foreach (var word in reg_exp.Replace(line, " ").ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries))
                     {
-                        words.Add(word.Trim());
+                        // a & i are the only single letter words in english
+                        if (word.Length > 1 || word.Equals("a") || word.Equals("i"))
+                        {
+                            words.Add(word.Trim());
+                        }
                     }
                 }
             }
