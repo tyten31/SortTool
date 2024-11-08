@@ -96,7 +96,7 @@ namespace SortTool
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Usage: sort -u -a <algorithm> <file> | head -n<#>");
             Console.WriteLine("Commands:");
-            Console.WriteLine(" -a <Sorting algorithm [Heap, Lexi, Merge, Quick, Radix]>");
+            Console.WriteLine(" -a <Sorting algorithm [Bubble, Heap, Lexi, Merge, Quick, Radix]>");
             Console.WriteLine(" -u <Unique words>");
             Console.WriteLine(" -n <Number of words>");
             Console.WriteLine("");
