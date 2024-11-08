@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Diagnostics;
 using SortTool.Quick;
 using SortTool.Heap;
+using SortTool.Bubble;
 
 namespace SortTool
 {
@@ -127,6 +128,10 @@ namespace SortTool
 
                 case SortAlgorithm.Radix:
                     SortedWords = RadixSort.Sort(words);
+                    break;
+
+                case SortAlgorithm.Bubble:
+                    SortedWords = BubbleSort.Sort(words);
                     break;
 
                 default:

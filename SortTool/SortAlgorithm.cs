@@ -2,6 +2,7 @@
 {
     public enum SortAlgorithm
     {
+        Bubble,
         Heap,
         Lexi,
         Merge,
